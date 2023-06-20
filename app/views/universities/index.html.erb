@@ -1,0 +1,19 @@
+<%= render(::Layouts::MainPageComponent.new(
+  title: "Liste des Universités",
+)) do |component|  %>
+  <% component.body do %>
+    <%= render(::Blocks::ItemsTableComponent.new(
+      item_type: 'university',
+      items: @universities,
+      pagy: @pagy,
+      columns: {
+        'name': 'Nom',
+        'slug': 'Slug',
+      },
+      actions: ['edit'],
+      scope: [],
+      display_new_button: true,
+      display_filter_button: true
+    )) %>
+  <% end %>
+<% end %>

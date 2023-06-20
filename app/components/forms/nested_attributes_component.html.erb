@@ -1,0 +1,29 @@
+<div data-controller="nested-attributes">
+  <div data-nested-attributes-target="recordsList">
+    <% @form_object.fields_for @field_name.pluralize do |nested_form| %>
+      <div class="single-record" data-new-record="<%= nested_form.object.new_record? %>">
+        <%= render(::Forms::NestedFieldsComponent.new(
+                nested_object_type: @field_name,
+                nested_form_object: nested_form,
+                main_form_item: @item,
+                main_form_item_type: @item_type
+        )) %>
+      </div>
+    <% end %>
+  </div>
+  <button type="button" class="button is-primary <%= 'hidden' if @disabled %>" data-action="click->nested-attributes#addNewRecord">
+    Ajouter
+  </button>
+  <template data-nested-attributes-target="recordTemplate">
+    <div class="flex flex-wrap items-end single-record" data-new-record="true">
+      <%= fields_for "#{@item_type}[#{@field_name.pluralize}_attributes]", @field_name.classify.constantize.new(), index: 'NEW_RECORD' do |nested_form| %>
+        <%= render(::Forms::NestedFieldsComponent.new(
+                nested_object_type: @field_name,
+                nested_form_object: nested_form,
+                main_form_item: @item,
+                main_form_item_type: @item_type
+        )) %>
+      <% end %>
+    </div>
+  </template>
+</div>

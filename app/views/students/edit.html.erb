@@ -1,0 +1,12 @@
+<%= render(::Layouts::MainPageComponent.new(
+  title: "Etudiant de #{current_university.name}",
+  class_name: "text-center"
+)) do |component|  %>
+  <% component.body do %>
+    <div class="w-full lg:w-7/12 mx-auto">
+      <turbo-frame id="student-form" target="_top">
+        <%= render partial: 'students/form', locals: { student: @student } %>
+      </turbo-frame>
+    </div>
+  <% end %>
+<% end %>

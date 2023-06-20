@@ -1,0 +1,54 @@
+<%= render(::Layouts::MainPageComponent.new(
+  title: "",
+  class_name: "text-center"
+)) do |component|  %>
+  <% component.body do %>
+    <div class="card border border-slate-200">
+      <div class="w-full lg:w-12/12" data-controller="accordion">
+        <div class="flex justify-between items-center w-full cursor-pointer" data-accordion-target="header" data-action="click->accordion#toggle">
+          <h2 class="mb-0 mt-0 text-xl font-semibold transition-colors duration-150 text-slate-700 dark:text-slate-200">Information du compte</h2>
+          <button class="relative flex items-center py-3 px-4 text-base text-slate-800 text-left bg-slate border-0 rounded-none transition focus:outline-none">
+            <span class="material-symbols-outlined" data-accordion-target="icon">unfold_less</span>
+          </button>
+        </div>
+        <div class="pt-6 mt-4 border-t border-slate-200" data-accordion-target="content">
+          <turbo-frame id="user-info-form" target="_top">
+            <%= render partial: 'users/shared/profil_form', locals: { user: @user.decorate } %>
+          </turbo-frame>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mt-2 border border-slate-200" data-turbo="false">
+      <div class="w-full lg:w-12/12" data-controller="accordion">
+        <div class="flex justify-between items-center w-full cursor-pointer" data-accordion-target="header" data-action="click->accordion#toggle">
+          <h2 class="mb-0 mt-0 text-xl font-semibold transition-colors duration-150 text-slate-700 dark:text-slate-200">Changer les informations sensibles</h2>
+          <button class="relative flex items-center py-3 px-4 text-base text-slate-800 text-left bg-slate border-0 rounded-none transition focus:outline-none">
+            <span class="material-symbols-outlined" data-accordion-target="icon">unfold_less</span>
+          </button>
+        </div>
+        <div class="pt-6 mt-4 border-t border-slate-200" data-accordion-target="content">
+          <turbo-frame id="user-form" target="_top">
+            <%= render partial: 'users/shared/edit', locals: { resource: @user, resource_name: 'user' } %>
+          </turbo-frame>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mt-2 border border-slate-200" data-turbo="false">
+      <div class="w-full lg:w-12/12" data-controller="accordion">
+        <div class="flex justify-between items-center w-full cursor-pointer" data-accordion-target="header" data-action="click->accordion#toggle">
+          <h2 class="mb-0 mt-0 text-xl font-semibold transition-colors duration-150 text-slate-700 dark:text-slate-200">Changer de mot de passe</h2>
+          <button class="relative flex items-center py-3 px-4 text-base text-slate-800 text-left bg-slate border-0 rounded-none transition focus:outline-none">
+            <span class="material-symbols-outlined" data-accordion-target="icon">unfold_less</span>
+          </button>
+        </div>
+        <div class="pt-6 mt-4 border-t border-slate-200" data-accordion-target="content">
+          <turbo-frame id="user-password-form" target="_top">
+            <%= render partial: 'users/shared/edit_password', locals: { resource: @user, resource_name: 'user' } %>
+          </turbo-frame>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

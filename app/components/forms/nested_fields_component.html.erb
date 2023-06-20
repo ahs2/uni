@@ -1,0 +1,23 @@
+<div class="w-full md:w-5/6 p-2">
+  <% @nested_form_fields.each do |nested_field| %>
+    <div class="mb-2">
+      <%= @nested_form_object.label nested_field[0], nested_field[1] %>
+      <%= render(::Elements::FormFieldsComponent.new(
+        field_name: nested_field[0],
+        field_type: nested_field[2],
+        form_object: @nested_form_object,
+        item: @nested_form_object.object,
+        options: nested_field[3],
+        item_type: @nested_object_type
+      )) %>
+      <p class="text-xs text-red-600 <%= "#{@nested_object_type.pluralize}_#{nested_field[0]}" %>_error"></p>
+    </div>
+  <% end %>
+</div>
+<div class="w-full md:w-1/6 p-2">
+  <button type="button" class="button is-danger mb-2" data-action="click->nested-attributes#deleteRecord">
+    <i class="mdi mdi-delete"></i>
+  </button>
+</div>
+<%= @nested_form_object.hidden_field :_destroy, class: "delete-target" %>
+<%= @nested_form_object.hidden_field :id, value: @nested_form_object.object.id %>

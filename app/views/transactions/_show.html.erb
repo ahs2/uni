@@ -1,0 +1,7 @@
+<%= render(::Blocks::MainFormComponent.new(
+                                          item_type: 'transaction',
+                                          item: transaction,
+                                          model: transaction,
+                                          scope: [transaction.student],
+                                          fields: Transaction::EDITABLE_FIELDS
+                                        )) %>

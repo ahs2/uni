@@ -1,0 +1,30 @@
+<%= render(::Layouts::MainPageComponent.new(
+  title: "Etudiant de #{current_university.name}",
+  class_name: "text-left"
+)) do |component|  %>
+  <% component.body do %>
+    <div class="md:flex md:flex-wrap">
+      <div class="md:w-6/12 w-full p-1">
+        <%= render partial: 'students/show', locals: { student: @student } %>
+      </div>
+
+      <div class="md:w-6/12 w-full p-1">
+        <div class="card">          
+          <%= render(::Blocks::ItemsTableComponent.new(
+            item_type: 'transaction',
+            items: @transactions,
+            pagy: @transaction_pagy,
+            columns: {
+              'displayed_created_at': 'Date',
+              'displayed_payment_method': 'Moyens',
+              'amount': 'Montant',
+              'displayed_status': 'Status',
+            },
+            actions: ['show'],
+            scope: [],
+          )) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

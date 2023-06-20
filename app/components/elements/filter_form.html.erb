@@ -1,0 +1,26 @@
+<div class="w-full md:w-3/4 p-2">
+<%= form_with url: send(index_link), scope: "", method: 'get', id: "search-filters", class: 'columns is-desktop is-multiline', local: true do |f| %>
+  <div class="flex">
+    <% @fields.each do |field| %>
+      <div class="field mb-2 mr-2">
+        <div class="control">
+          <small><%= f.label field[1] %></small>
+          <%= render(::Elements::FormFieldsComponent.new(
+            field_name: field[0],
+            field_type: field[2],
+            form_object: f,
+            item: @item,
+            options: field[3],
+            item_type: @item_type
+          )) %>
+        </div>
+      </div>
+    <% end %>
+    <div class="field column">
+      <div class="control">
+        <button type="submit" name="button" class="button is-success mt-5">Filtrer</button>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>

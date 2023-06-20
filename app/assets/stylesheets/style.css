@@ -1,0 +1,63 @@
+html {
+  position: relative;
+  font-size: 16px;
+}
+
+body {
+  letter-spacing: 0.5px;
+  font-family: Poppins, sans-serif;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  color: #282828;
+  font-weight: 700;
+  margin: 10px 0
+}
+
+p {
+  line-height: 1.7;
+}
+
+* {
+  outline: 0 !important
+}
+
+a {
+  transition: all 0.3s ease-in-out;
+}
+
+.loader-v1 {
+  border: 6px solid #f8f6f1;
+  border-top: 6px solid #f05152;
+  border-bottom: 6px solid #f05152;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.form-img-preview {
+  max-width: 350px;
+}
+
+.form-img-preview img {
+  max-width: 100px;
+}

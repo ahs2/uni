@@ -1,0 +1,16 @@
+<turbo-frame id="group_school_years">
+  <h5 class="font-bold text-xl">Liste des cycles</h5>
+  <%= render(::Blocks::ItemsTableComponent.new(
+    item_type: 'school_year',
+    items: @school_years,
+    pagy: @pagy,
+    columns: {
+      'name': 'Nom',
+      'current_year': 'Année courante',
+    },
+    actions: ['edit'],
+    scope: [],
+    display_new_button: true,
+    display_filter_button: true
+  )) %>
+</turbo-frame>

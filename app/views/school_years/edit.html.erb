@@ -1,0 +1,12 @@
+<%= render(::Layouts::MainPageComponent.new(
+  title: "Modifier un cycle",
+  class_name: "text-center"
+)) do |component|  %>
+  <% component.body do %>
+    <div class="w-full lg:w-7/12 mx-auto">
+      <turbo-frame id="school_year-form" target="_top">
+        <%= render partial: 'school_years/form', locals: { school_year: @school_year } %>
+      </turbo-frame>
+    </div>
+  <% end %>
+<% end %>

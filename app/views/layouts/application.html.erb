@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>University sgi</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= render 'application/favicon' %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <script> let theme = localStorage.getItem('dark'); if (theme == "true") { document.getElementsByTagName('html')[0].classList.add('dark'); }</script>
+  </head>
+
+  <body class="m-0 antialiased font-normal text-base leading-default text-slate-700 min-h-screen bg-white"
+     data-controller="sidebar navbar dropdown theme-color notification">
+    <%= render "shared/notification" %>
+    <%= render "shared/sidebar" %>
+    <div class="absolute top-0 left-0 w-full h-full flex flex-col bg-black opacity-60 z-40 hidden" data-navbar-target="contentBg"></div>
+
+    <div class="absolute top-0 right-0 z-50">
+      <button class="mt-5 mr-5 rounded-md xl:hidden block focus:outline-none focus:shadow-outline-purple bg-transparent text-white" aria-label="Menu" data-action="click->navbar#toggle">
+        <div class="hidden" data-navbar-target="closeSide">
+          <span class="material-symbols-outlined text-lg">close</span>
+        </div>
+      </button>
+    </div>
+    
+    <main class="xl:ml-[15rem] relative h-full rounded-2xl px-6 min-h-screen bg-slate-50">
+      <%= render "shared/navbar" %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+fr:
+  enum:
+    user:
+      profiles:
+        student: 'Etudient'
+        admin: 'Administrateur'
+    student:
+      genders:
+        male: 'Masculin'
+        female: 'Féminin'
+      marital_statuses:
+        married: 'Marié'
+        unmarried: 'Célibataire'
+        divorced: 'Divorcé'
+        widow: 'Veuve/Veuf'
+    transaction:
+      status:
+        initiated: 'Initialisé'
+        pending: 'En cours'
+        succeeded: 'Succès'
+        failed: 'Echoué'
+        refunded: 'Remboursé'
+      payment_method:
+        mtn_bj: 'MTN Bénin'
+        moov_bj: 'MOOV Bénin'
+        moov_ne: 'MOOV Niger'
+        airtel_ne: 'AIRTEL Niger'
+        al_izza: 'al_IZZA'
+        credit_card: 'Carte de credit'
+

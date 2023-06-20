@@ -1,0 +1,84 @@
+<div class="w-full bg-white dark:bg-slate-800 rounded-xl p-4 pb-6">
+  <div data-controller="accordion">
+    <div class="flex flex-wrap justify-end">
+      <% if @display_new_button && helpers.policy(@item_type.to_sym).create? %>
+        <%= link_to send(new_link), class: 'button is-primary' do %>
+          Création
+        <% end %>
+      <% end %>
+      <% if @display_filter_button %>
+        <button class="button is-success ml-2" data-action="click->accordion#toggle">
+          Filtre
+        </button>
+      <% end %>
+    </div>
+    
+    <% if @display_filter_button %>
+      <div class="accordion-content filter-accordion <%= @item_type %> hidden flex flex-wrap w-full" data-accordion-target="content">
+        <%= render(::Elements::FilterForm.new(
+          item_type: @item_type,
+          fields: @item_type.classify.constantize::SEARCHABLE_FIELDS,
+          item: @item_type.classify.constantize.new,
+          scope: @scope
+        )) %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="overflow-x-auto mt-4">
+    <table class="items-center w-full mb-0 align-top border-slate-200 text-slate-500">
+      <thead class="align-bottom text-left bg-slate-50">
+        <tr class="text-slate-700">
+          <% @columns.each do |column, title| %>
+            <th class="px-4 py-3"><%= title %></th>
+          <% end %>
+          <% if @actions.present? %>
+          <th style="width: 100px;"></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y dark:divide-slate-500 dark:bg-slate-800">
+        <% @items.each do |item| %>
+          <tr id="<%= helpers.dom_id(item, 'admin') %>" class="text-slate-700 dark:text-slate-400 border-b border-slate-200">
+            <% @columns.each do |column, title| %>
+              <td class="px-4 py-3">
+                <%= item.send(column) %>
+              </td>
+            <% end %>
+            <% if @actions.present? %>
+              <td class="px-4 py-3">
+                <div class="flex">
+                  <% @actions.each do |action| %>
+                    <% if helpers.policy(item).send("#{action}?") %>
+                      <% if action.to_s == 'show' %>
+                        <%= link_to send(show_link, route_params(item)), class: "button is-light text-sm mx-1" do %>
+                          Voir
+                        <% end %>
+                      <% elsif action.to_s == 'delete' %>
+                        <%= link_to send(delete_link, route_params(item)), method: :delete, data: { confirm: 'Etes-vous sure?' }, class: "button is-danger text-sm mx-1" do %>
+                          Supprimer
+                        <% end %>
+                      <% elsif action.to_s == 'edit' %>
+                        <%= link_to send(edit_link, route_params(item)), class: "button is-light-outlined text-sm mx-1" do %>
+                          Modifier
+                        <% end %>
+                      <% elsif action.to_s == 'impersonate' && helpers.current_user.is_admin? %>
+                        <%= link_to impersonate_user_path(item), class: "button is-warning text-sm mx-1", method: :post, :"data-turbolinks" => false do %>
+                          Impersonate
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="flex justify-end px-4 py-3 text-xs font-semibold tracking-wide text-slate-500 dark:text-slate-400">
+  <%== helpers.pagy_nav(@pagy) %>
+</div>

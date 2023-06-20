@@ -1,0 +1,33 @@
+<h2 class="mb-5 mt-0 text-2xl font-semibold transition-colors duration-150 text-slate-700 dark:text-slate-200">Pré inscription</h2>
+<div class="flex flex-wrap step">
+  <div class="w-full md:w-6/12 lg:w-[20%] text-center p-1">
+    <a href="#" class="<%= 'button-step-active' if current_step == '1' %> button-step first-child"
+      data-action="click->reloadFrame#reload" data-currentstep="1">
+      Options pour les nationaux
+    </a>
+  </div>
+  <div class="w-full md:w-6/12 lg:w-[20%] text-center p-1">
+    <a href="#" class="<%= 'button-step-active' if current_step == '2' %> button-step first-child"
+      data-action="click->reloadFrame#reload" data-currentstep="2">
+      Informations personnelles
+    </a>
+  </div>
+  <div class="w-full md:w-6/12 lg:w-[20%] text-center p-1">
+    <a href="#" class="<%= 'button-step-active' if current_step == '3' %> button-step"
+      data-action="click->reloadFrame#reload" data-currentstep="3">
+      Diplome d'études
+    </a>
+  </div>
+  <div class="w-full md:w-6/12 lg:w-[20%] text-center p-1">
+    <a href="#" class="<%= 'button-step-active' if current_step == '4' %> button-step"
+      data-action="click->reloadFrame#reload" data-currentstep="4">
+      Faculté et session souhaitées
+    </a>
+  </div>
+  <div class="w-full md:w-6/12 lg:w-[20%] text-center p-1">
+    <a href="#" class="<%= 'button-step-active' if current_step == '5' %> button-step"
+      data-action="click->reloadFrame#reload" data-currentstep="5">
+      Photos et documents
+    </a>
+  </div>
+</div>

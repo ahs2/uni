@@ -1,0 +1,16 @@
+<turbo-frame id="group_transactions">
+  <h5 class="font-bold text-xl">Liste des transactions</h5>
+  <%= render(::Blocks::ItemsTableComponent.new(
+    item_type: 'transaction',
+    items: @transactions,
+    pagy: @pagy,
+    columns: {
+      'displayed_started_at': 'Date début',
+      'displayed_ended_at': 'Date fin',
+      # 'displayed_group': 'Groupe',
+    },
+    actions: ['edit'],
+    scope: [],
+    display_filter_button: true
+  )) %>
+</turbo-frame>

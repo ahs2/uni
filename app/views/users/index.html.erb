@@ -1,0 +1,22 @@
+<%= render(::Layouts::MainPageComponent.new(
+  title: "Utilisateurs",
+)) do |component|  %>
+  <% component.body do %>
+    <%= render(::Blocks::ItemsTableComponent.new(
+      item_type: 'user',
+      items: @users,
+      pagy: @pagy,
+      columns: {
+        'displayed_full_name': 'Nom complet',
+        'email': 'Email',
+        'phone': 'Numéro de téléphone',
+        'displayed_university': 'Université',
+        'displayed_profile': 'Profile',
+      },
+      actions: ['edit', 'impersonate'],
+      scope: [],
+      display_new_button: true,
+      display_filter_button: true
+    )) %>
+  <% end %>
+<% end %>

@@ -1,0 +1,12 @@
+<%= render(::Layouts::MainPageComponent.new(
+  title: "",
+  class_name: "text-center"
+)) do |component|  %>
+  <% component.body do %>
+    <div class="card" data-controller="reloadFrame">
+      <turbo-frame id="pre_registration-form" target="_top" data-reloadFrame-target="frame">
+        <%= render partial: "pre_registrations/step_#{ @current_step }_form", locals: { student: @student } %>
+      </turbo-frame>
+    </div>
+  <% end %>
+<% end %>

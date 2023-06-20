@@ -1,0 +1,9 @@
+<%= render partial: "pre_registrations/step_header", locals: { current_step: @current_step } %>
+<div class="w-full lg:w-12/12 pt-4 px-8">
+  <%= render(::Blocks::MainFormComponent.new(
+                                            item_type: 'student',
+                                            item: student,
+                                            model: student,
+                                            fields: Student::EDITABLE_FIELDS_STEP_4
+                                          )) %>
+</div>

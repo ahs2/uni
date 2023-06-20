@@ -1,0 +1,16 @@
+<turbo-frame id="field_options">
+  <h5 class="font-bold text-xl">Liste des options</h5>
+  <%= render(::Blocks::ItemsTableComponent.new(
+    item_type: 'field_option',
+    items: @field_options,
+    pagy: @pagy,
+    columns: {
+      'name': 'Nom',
+      'displayed_field': 'Filière',
+    },
+    actions: ['edit'],
+    scope: [],
+    display_new_button: true,
+    display_filter_button: true
+  )) %>
+</turbo-frame>

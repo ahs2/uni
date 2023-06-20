@@ -1,0 +1,90 @@
+<% logo_url = current_university.present? ? current_university.decorate.logo_url : 'logo.png' %>
+
+<div class="block bg-white">
+  <div class="lg:flex lg:flex-wrap g-0 min-h-screen">
+    <div
+      class="relative hidden lg:w-6/12 lg:flex items-end lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none rounded-lg bg-center bg-cover"
+      style="background-image: url(<%= image_url('bg.jpg') %>)"
+    >
+      <div class="absolute top-0 left-0 w-full h-full flex flex-col bg-blue-600 opacity-60">
+      </div>
+      <div class="px-4 py-6 md:p-12 md:mx-6 z-50">
+        <h4 class="text-4xl font-semibold mb-4 text-white leading-normal max-w-[32rem]">
+          Créer un compte si vous n'en avez pas encore et faites le valider pour accéder au formulaire de préinscription
+        </h4>
+        <div class="mb-6">
+          <span class="border border-4 border-slate-500 w-20 inline-block rounded mr-2"></span>
+          <% if current_university.present? %>
+            <span class="border border-4 border-white w-20 inline-block rounded"></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:w-6/12 px-4 md:px-0 overflow-x-auto h-screen">
+      <div class="max-w-md w-full min-h-screen flex items-center justify-center flex-col mx-auto">
+        <div class="text-center">
+          <a class="block m-0 text-sm whitespace-nowrap text-slate-700 text-center" href="<%= root_path %>">
+            <%# image_tag "#{ Rails.application.routes.url_helpers.rails_representation_path(current_university.logo.variant(resize_to_limit: [150, 150]), only_path: true) }", class: 'inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-24', alt: 'main_logo' %>
+            <%# image_tag(current_university.logo) if current_university.logo.attached? %>
+          </a>
+
+          <div class="md:flex md:flex-wrap justify-center text-center pb-8 pt-10">
+            <div class="w-full md:w-6/12 md:pr-0.5">
+              <a class="block m-0 text-sm whitespace-nowrap w-full active-border text-blue-500 dark:text-blue-300" href="<%= new_user_session_path %>">
+                Se connecter
+                <div class="border border-1 border-slate-300 mt-3 w-full"></div>
+              </a>
+            </div>
+            <% if current_university.present? %>
+              <div class="w-full md:w-6/12">
+                <a class="block m-0 text-sm whitespace-nowrap w-full text-slate-400" href="<%= new_user_registration_path %>">
+                  S'inscrire
+                  <div class="border border-1 border-slate-300 mt-3 w-full"></div>
+                </a>
+              </div>
+            <% end %>
+          </div>
+          <h4 class="text-xl font-semibold mt-1 mb-6 pb-1">Bienvenue sur la plateforme des inscriptions <% if current_university.present? %>de <%= current_university.name %><% else %>Univercitaire<% end %></h4>
+        </div>
+                
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="mb-4">
+            <%= f.label :login, 'Email ou Numéro de téléphone', class: 'text-sm text-slate-600 text-semibold dark:text-slate-400' %>
+            <%= f.text_field :login, autofocus: true, class: "bg-gray-200 appearance-none border-1 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-300" %>
+          </div>
+                  
+          <div class="mb-4">
+            <%= f.label :password, 'Mot de passe', class: 'text-sm text-slate-600 text-semibold dark:text-slate-400' %>
+            <%= f.password_field :password, class: "bg-gray-200 appearance-none border-1 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-300" %>
+          </div>
+
+          <div class="has-text-right form-submit mb-4">
+            <%= f.submit "Continuer", class: 'w-full py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer' %>
+          </div>
+
+          <div class="md:flex md:flex-wrap mb-4">
+            <% if devise_mapping.rememberable? -%>
+              <div class="w-full md:w-6/12 p-0.5">
+                <div class="flex items-center">
+                  <%= f.check_box :remember_me, class: "h-4 w-4 text-blue-600 focus:ring-blue-500 border-slate-300 rounded" %>
+                  <%= f.label :remember_me, "Se souvenir de moi", class: "ml-2 block text-slate-900 text-xs" %>
+                </div>
+              </div>
+            <% end -%>
+            
+            <div class="w-full md:w-6/12 p-0.5 md:text-right">
+              <a class="text-blue-600 text-semibold text-sm" href="<%= new_password_path %>">Mot de passe oublié ?</a>
+            </div>
+          </div>
+        <% end %>
+
+        <% if current_university.present? %>
+          <div class="my-4 text-sm text-slate-500">
+            Vous n'avez pas encore de compte? <a class="text-blue-600 text-semibold" href="<%= new_user_registration_path %>">S'inscrire maintenant</a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

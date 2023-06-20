@@ -1,0 +1,30 @@
+<%= render(::Layouts::MainPageComponent.new(
+  title: "",
+)) do |component|  %>
+  <% component.body do %>
+    <div class="my-6 flex flex-wrap justify-between items-center">
+      <p class="text-2xl font-semibold transition-colors duration-150 text-slate-700 dark:text-slate-200 text-left">
+        Etudiants de <%= current_university.name %>
+      </p>
+      <a class="px-3 py-2 button is-primary" href="<%= new_import_student_path %>">
+        <span class="ml-2">Importations</span>
+      </a>
+    </div>
+    <%= render(::Blocks::ItemsTableComponent.new(
+      item_type: 'student',
+      items: @students,
+      pagy: @pagy,
+      columns: {
+        'matricule': 'Numéro matricule',
+        'displayed_full_name': 'Nom et prénoms',
+        'displayed_field': 'Filière',
+        'displayed_field_option': 'Option',
+        'displayed_gender': 'Sexe',
+        'displayed_status': 'Status',
+      },
+      actions: ['show'],
+      scope: [],
+      display_filter_button: true
+    )) %>
+  <% end %>
+<% end %>

@@ -1,0 +1,26 @@
+<div data-controller="choices" class="card">
+  <%= form_with model: form_models, local: true, html: { class: "#{@item_type}-form", multipart: true } do |f| %>
+    <% @fields.each do |field| %>
+      <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/3 <%= 'hidden' if field[2] == 'hidden' %>">
+          <%= f.label field[0], field[1], class: 'label dark:text-slate-400' %>
+        </div>
+        <div class="md:w-2/3 <%= 'hidden' if field[2] == 'hidden' %>">
+          <%= render(::Elements::FormFieldsComponent.new(
+            field_name: field[0],
+            field_type: field[2],
+            form_object: f,
+            item: @item,
+            options: field[3],
+            item_type: @item_type
+          )) %>
+          <%= helpers.form_field_error_helper(@item, field[0]) %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="flex flex-wrap justify-end mt-10">
+      <%= f.submit "Enregistrer", class: "button is-primary" %>
+    </div>
+  <% end %>
+</div>

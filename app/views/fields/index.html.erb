@@ -1,0 +1,15 @@
+<turbo-frame id="fields">
+  <h5 class="font-bold text-xl">Liste des filières</h5>
+  <%= render(::Blocks::ItemsTableComponent.new(
+    item_type: 'field',
+    items: @fields,
+    pagy: @pagy,
+    columns: {
+      'name': 'Nom',
+    },
+    actions: ['edit'],
+    scope: [],
+    display_new_button: true,
+    display_filter_button: true
+  )) %>
+</turbo-frame>
