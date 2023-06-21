@@ -24,6 +24,18 @@ class StudentDecorator < ApplicationDecorator
   def displayed_field_three
     object.field_three.name if object.field_three.present?
   end
+
+  def displayed_field_option_one
+    object.field_option_one.name if object.field_option_one.present?
+  end
+
+  def displayed_field_option_two
+    object.field_two.name if object.field_option_two.present?
+  end
+
+  def displayed_field_option_three
+    object.field_option_three.name if object.field_option_three.present?
+  end
   
   def displayed_field_option
     object.field_option.name if object.field_option.present?
