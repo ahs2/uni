@@ -1,0 +1,102 @@
+<div id="<%= dom_id etudiant %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Matricule:</strong>
+    <%= etudiant.matricule %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">First name:</strong>
+    <%= etudiant.first_name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Last name:</strong>
+    <%= etudiant.last_name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Gender:</strong>
+    <%= etudiant.gender %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Birth date:</strong>
+    <%= etudiant.birth_date %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Birth place:</strong>
+    <%= etudiant.birth_place %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Nationality:</strong>
+    <%= etudiant.nationality %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Marital status:</strong>
+    <%= etudiant.marital_status %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email:</strong>
+    <%= etudiant.email %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Address:</strong>
+    <%= etudiant.address %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Parent address:</strong>
+    <%= etudiant.parent_address %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">User:</strong>
+    <%= etudiant.user_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Certificat name:</strong>
+    <%= etudiant.certificat_name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Certificat year:</strong>
+    <%= etudiant.certificat_year %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Certificat place:</strong>
+    <%= etudiant.certificat_place %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Certificat country:</strong>
+    <%= etudiant.certificat_country %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Field:</strong>
+    <%= etudiant.field_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Field option:</strong>
+    <%= etudiant.field_option_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Metadata:</strong>
+    <%= etudiant.metadata %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this etudiant", etudiant, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this etudiant', edit_etudiant_path(etudiant), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

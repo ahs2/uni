@@ -1,4 +1,4 @@
-class StudentDecorator < ApplicationDecorator
+class EtudiantDecorator < ApplicationDecorator
   delegate_all
 
   def displayed_gender
@@ -11,18 +11,6 @@ class StudentDecorator < ApplicationDecorator
   
   def displayed_field
     object.field.name if object.field.present?
-  end
-
-  def displayed_field_one
-    object.field_one.name if object.field_one.present?
-  end
-
-  def displayed_field_two
-    object.field_two.name if object.field_two.present?
-  end
-
-  def displayed_field_three
-    object.field_three.name if object.field_three.present?
   end
   
   def displayed_field_option

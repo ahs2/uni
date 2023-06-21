@@ -1,12 +1,7 @@
-class Student < ApplicationRecord
-
+class Etudiant < ApplicationRecord
   belongs_to :user
   belongs_to :field, optional: true
   belongs_to :field_option, optional: true
-
-  belongs_to :field_one, :class_name => 'Field', optional: true
-  belongs_to :field_two, :class_name => 'Field', optional: true
-  belongs_to :field_three, :class_name => 'Field', optional: true
 
   has_many :transactions
   
@@ -20,13 +15,10 @@ class Student < ApplicationRecord
   validates :last_name, :last_name, :gender, :nationality, :birth_place, :marital_status, :address, :email, :parent_address, presence: true
   validates :certificat_name, :certificat_year, :certificat_place, :certificat_country, presence: true, if: -> { current_step == '2' }
   validates :birth_date, :presence => true
-  #validates :matricule, presence: true, uniqueness: {case_sensitive: true}
+  validates :matricule, presence: true, uniqueness: {case_sensitive: true}
   validate :validate_age
 
-  jsonb_accessor :metadata,
-    current_step: [:string, default: '1']
-
-  # Formulaire de recherche
+# Formulaire de recherche
   SEARCHABLE_FIELDS = [
     ['query', 'Recherche', 'text'],
   ].freeze
@@ -78,9 +70,9 @@ class Student < ApplicationRecord
 
   # Formulaire Etape 4
   EDITABLE_FIELDS_STEP_4 = [
-    ['field_one#class_name#field', 'Votre 1er filière choisis', 'reference'],
-    ['field_two#class_name#field', 'Votre 2em filière choisis', 'reference'],
-    ['field_three#class_name#field', 'Votre 3e filière choisis', 'reference'],
+    ['filier_one', 'Votre 1er filière choisis', 'text'],
+    ['filier_one', 'Votre 2em filière choisis', 'text'],
+    ['filier_one', 'Votre 3e filière choisis', 'text'],
     ['current_step', '', 'hidden'],
   ].freeze
 
@@ -89,9 +81,10 @@ class Student < ApplicationRecord
     ['bac', 'Uploader diplome', 'pdf'],
     ['releve', 'Uploader diplome', 'pdf'],
     ['photo', 'Uploader votre photo', 'image'],
-    ['current_step', '', 'hidden'],
+    #['current_step', '', 'hidden'],
   ].freeze
 
+  
   def self.search(query)
     return all.order('matricule asc') if query.blank?
     build_where_query(all, query).order('matricule asc')

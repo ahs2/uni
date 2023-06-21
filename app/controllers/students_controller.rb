@@ -5,11 +5,15 @@ class StudentsController < GenericsController
     @current_step = params[:student][:current_step]
     @next_step = @current_step.to_i + 1
     params[:student][:current_step] = @next_step
-
+    
     respond_to do |format|
       if @student.update(student_params)
         format.html do
-          redirect_to pre_registration_path(step: @next_step), notice: "Action exécutée avec succès"
+         #if @current_step.to_i <= 5
+            redirect_to pre_registration_path(step: @next_step), notice: "Action exécutée avec succès"
+          #else 
+            #redirect_to success_pre_registration_path, notice: "Votre Inscription est effectué avec succès."
+          #end
         end
       else
         format.turbo_stream do
@@ -50,6 +54,11 @@ class StudentsController < GenericsController
       :certificat_year,
       :certificat_place,
       :certificat_country,
+
+      :field_one_id,
+      :field_two_id,
+      :field_three_id,
+
       :bac,
       :photo,
       :releve,

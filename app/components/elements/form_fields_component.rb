@@ -129,13 +129,22 @@ end
       class: 'js-choice select input-dark')
   end
 
+
   def get_reference_field
-    reference_class = @field_name.classify.constantize
-    @form_object.collection_select("#{@field_name}_id", reference_class.all, :id, :select_title, {prompt: true},
-      {class: "js-choice select input-dark",
-      data: {action: 'change->extended-select#onSelectChange', selection: @field_name}})
+
+    if  @field_name.include?("class_name") 
+        @field_class_name = @field_name.split("#")[@field_name.split("#").index("class_name") + 1]
+        @field_name = @field_name.split("#")[0]
+        @reference_class = @field_class_name.classify.constantize
+    else  
+      @reference_class = @field_name.classify.constantize
+    end
+      @form_object.collection_select("#{@field_name}_id", @reference_class.all, :id, :select_title, {prompt: true},
+        {class: "js-choice select input-dark",
+        data: {action: 'change->extended-select#onSelectChange', selection: @field_name}})
   end
 
+  
   def get_depended_model_field
     depends_on = @options[:depends_on]
     reference_class = @field_name.classify.constantize

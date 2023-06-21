@@ -8,6 +8,7 @@ class SubdomainConstraint
 end
 
 Rails.application.routes.draw do
+  resources :etudiants
   root 'home#welcome'
 
   scope 'auth' do
@@ -32,12 +33,17 @@ Rails.application.routes.draw do
   end
 
   constraints SubdomainConstraint do
-    resource :pre_registration, only: [:show]
+    resource :pre_registration, only: [:show] do 
+      member do 
+        get :success
+      end
+    end
     resources :transactions
     resources :students
     resources :fields
     resources :field_options
     resources :import_students
+
   end
   
   resource :dashboard, only: [:show]

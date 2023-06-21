@@ -1,0 +1,43 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  matricule: MyString
+  first_name: MyString
+  last_name: MyString
+  gender: 1
+  birth_date: 2023-06-21 09:17:18
+  birth_place: MyString
+  nationality: MyString
+  marital_status: 1
+  email: MyString
+  address: MyString
+  parent_address: MyString
+  user: one
+  certificat_name: MyString
+  certificat_year: 1
+  certificat_place: MyString
+  certificat_country: MyString
+  field: one
+  field_option: one
+  metadata: 
+
+two:
+  matricule: MyString
+  first_name: MyString
+  last_name: MyString
+  gender: 1
+  birth_date: 2023-06-21 09:17:18
+  birth_place: MyString
+  nationality: MyString
+  marital_status: 1
+  email: MyString
+  address: MyString
+  parent_address: MyString
+  user: two
+  certificat_name: MyString
+  certificat_year: 1
+  certificat_place: MyString
+  certificat_country: MyString
+  field: two
+  field_option: two
+  metadata: 

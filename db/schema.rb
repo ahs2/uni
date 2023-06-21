@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_17_174701) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_21_144647) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,30 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_174701) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "etudiants", force: :cascade do |t|
+    t.string "matricule"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "gender"
+    t.datetime "birth_date"
+    t.string "birth_place"
+    t.string "nationality"
+    t.integer "marital_status"
+    t.string "email"
+    t.string "address"
+    t.string "parent_address"
+    t.bigint "user_id"
+    t.string "certificat_name"
+    t.integer "certificat_year"
+    t.string "certificat_place"
+    t.string "certificat_country"
+    t.bigint "field_id"
+    t.bigint "field_option_id"
+    t.jsonb "metadata"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "field_options", force: :cascade do |t|
@@ -106,6 +130,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_174701) do
     t.jsonb "metadata"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "field_one_id"
+    t.bigint "field_two_id"
+    t.bigint "field_three_id"
+    t.bigint "field_option_one_id"
+    t.bigint "field_option_two_id"
+    t.bigint "field_option_three_id"
+    t.index ["field_one_id"], name: "index_students_on_field_one_id"
+    t.index ["field_option_one_id"], name: "index_students_on_field_option_one_id"
+    t.index ["field_option_three_id"], name: "index_students_on_field_option_three_id"
+    t.index ["field_option_two_id"], name: "index_students_on_field_option_two_id"
+    t.index ["field_three_id"], name: "index_students_on_field_three_id"
+    t.index ["field_two_id"], name: "index_students_on_field_two_id"
   end
 
   create_table "transactions", force: :cascade do |t|
