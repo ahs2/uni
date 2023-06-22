@@ -26,12 +26,15 @@
           <strong>Première Choix</strong>
         </div>
         <div>
-          <%= form.label :field_one, "Facultés ou Ecoles", class: "block text-gray-700 text-sm font-bold mb-2" %>
-          <%= form.select :field_one, options_for_select([['Option 1', 'option1'], ['Option 2', 'option2'], ['Option 3', 'option3']]), {}, class: "bg-slate-50 shadow w-full focus:border-blue-300 rounded" %>
+          <%= form.label :field_one_id, "Facultés ou Ecoles", class: "block text-gray-700 text-sm font-bold my-4" %>
+
+          <%= form.select :field_one_id, options_for_select(selt = @fields.map{|s|[s.name, s.id]}), {}, {class: "select" }%>
+          
         </div>
         <div>
-          <%= form.label :field_option_one, "Départements ou Filières", class: "block text-gray-700 text-sm font-bold mb-2" %>
-          <%= form.select :ield_option_one, options_for_select([['Option 1', 'option1'], ['Option 2', 'option2'], ['Option 3', 'option3']]), {}, class: "bg-slate-50 shadow w-full focus:border-blue-300 rounded" %>
+          <%= form.label :field_option_one_id, "Départements ou Filières", class: "block text-gray-700 text-sm font-bold my-4" %>
+
+          <%= form.select :field_option_one_id, options_for_select(@field_options.map{|s|[s.name, s.id]}), {}, {class: "select" }%>
         </div>
   
       </div>
@@ -53,12 +56,12 @@
           <strong>Deuxième Choix</strong>
         </div>
         <div>
-          <%= form.label :field_two, "Facultés ou Ecoles", class: "block text-gray-700 text-sm font-bold mb-2" %>
-          <%= form.select :field_two, options_for_select([['Option 1', 'option1'], ['Option 2', 'option2'], ['Option 3', 'option3']]), {}, class: "bg-slate-50 shadow w-full focus:border-blue-300 rounded" %>
+          <%= form.label :field_two_id, "Facultés ou Ecoles", class: "block text-gray-700 text-sm font-bold my-4" %>
+          <%= form.select :field_two_id, options_for_select(@fields.map{|s|[s.name, s.id]}), {}, {class: "select" }%>
         </div>
         <div>
-          <%= form.label :field_option_two, "Départements ou Filières", class: "block text-gray-700 text-sm font-bold mb-2" %>
-          <%= form.select :ield_option_two, options_for_select([['Option 1', 'option1'], ['Option 2', 'option2'], ['Option 3', 'option3']]), {}, class: "bg-slate-50 shadow w-full focus:border-blue-300 rounded" %>
+          <%= form.label :field_option_two_id, "Départements ou Filières", class: "block text-gray-700 text-sm font-bold my-4" %>
+          <%= form.select :field_option_two_id, options_for_select(@field_options.map{|s|[s.name, s.id]}), {}, {class: "select" }%>
         </div>
       </div>
 
@@ -85,20 +88,25 @@
           <strong>Troixième Choix</strong>
         </div>
         <div>
-          <%= form.label :field_three, "Facultés ou Ecoles", class: "block text-gray-700 text-sm font-bold mb-2" %>
-          <%= form.select :field_three, options_for_select([['Option 1', 'option1'], ['Option 2', 'option2'], ['Option 3', 'option3']]), {}, class: "bg-slate-50 shadow w-full focus:border-blue-300 rounded" %>
+          <%= form.label :field_three_id, "Facultés ou Ecoles", class: "block text-gray-700 text-sm font-bold mb-4" %>
+
+          <%= form.select :field_three_id, options_for_select(@fields.map{|s|[s.name, s.id]}), {}, {class: "select" }%>
         </div>
         <div>
-          <%= form.label :field_option_three, "Départements ou Filières", class: "block text-gray-700 text-sm font-bold mb-2" %>
-          <%= form.select :field_option_three, options_for_select([['Option 1', 'option1'], ['Option 2', 'option2'], ['Option 3', 'option3']]), {}, class: "bg-slate-50 shadow w-full focus:border-blue-300 rounded" %>
+          <%= form.label :field_option_three_id, "Départements ou Filières", class: "block text-gray-700 text-sm font-bold my-4" %>
+
+          <%= form.select :field_option_three_id, options_for_select(@field_options.map{|s|[s.name, s.id]}), {}, {class: "select" }%>
         </div>
       </div>
     </div>
+
+    <%= form.hidden_field :current_step , value: "5"  %>
+
     <div class="mt-4">
-      <%= form.submit "Enregistrer", class: "border border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-slate-50 font-bold py-2 px-4 rounded shadow-xl hover:shadow-none" %>
+      <%= form.submit "Enregistrer", class: "border border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-slate-50 font-bold py-2 px-4 rounded shadow-xl hover:shadow-none ml-auto" %>
       
     <% end %>
-    <%= link_to "Page suivant", pre_registration_path + "?step=5", class: "border border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-slate-50 font-bold py-2 px-4 rounded shadow-xl hover:shadow-none" %>
+    
     </div>
 
 </div>

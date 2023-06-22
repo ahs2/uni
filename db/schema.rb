@@ -61,7 +61,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_144647) do
     t.string "certificat_country"
     t.bigint "field_id"
     t.bigint "field_option_id"
-    t.jsonb "metadata"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

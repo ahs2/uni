@@ -5,7 +5,7 @@
   <% component.body do %>
     <div class="w-full lg:w-7/12 mx-auto">
       <turbo-frame id="field-form" target="_top">
-        <%= render partial: 'fields/form', locals: { field: @field } %>
+        <%= render partial: 'field/form', locals: { field: @field } %>
       </turbo-frame>
     </div>
   <% end %>

@@ -1,19 +1,24 @@
 class StudentsController < GenericsController
+
   def update
     authorize Student
     @student = Student.find_by(user: current_user)
     @current_step = params[:student][:current_step]
+
     @next_step = @current_step.to_i + 1
     params[:student][:current_step] = @next_step
+    @fields = Field.all
+    @field_options = FieldOption.all
     
+    if current_step == 1 
+     @table_number = params[:student]
+     @school_year = params[:student]
+    end
+
     respond_to do |format|
-      if @student.update(student_params)
+      if @student.update!(student_params)
         format.html do
-         #if @current_step.to_i <= 5
             redirect_to pre_registration_path(step: @next_step), notice: "Action exécutée avec succès"
-          #else 
-            #redirect_to success_pre_registration_path, notice: "Votre Inscription est effectué avec succès."
-          #end
         end
       else
         format.turbo_stream do
@@ -32,10 +37,6 @@ class StudentsController < GenericsController
     @transactions = @transactions.decorate
   end
 
-  def form
-    @student = ImportStudent.find()
-  end
-  
   private
 
   def student_params
@@ -58,6 +59,10 @@ class StudentsController < GenericsController
       :field_one_id,
       :field_two_id,
       :field_three_id,
+
+      :field_option_one_id,
+      :field_option_two_id,
+      :field_option_three_id,
 
       :bac,
       :photo,
