@@ -8,6 +8,10 @@ class Student < ApplicationRecord
   belongs_to :field_two, :class_name => 'Field', optional: true
   belongs_to :field_three, :class_name => 'Field', optional: true
 
+  belongs_to :field_option_one, :class_name => 'Field_Option', optional: true
+  belongs_to :field_option_two, :class_name => 'Field_Option', optional: true
+  belongs_to :field_option_three, :class_name => 'Field_Option', optional: true
+
   has_many :transactions
   
   has_one_attached :bac
