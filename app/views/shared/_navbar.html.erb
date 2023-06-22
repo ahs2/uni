@@ -3,10 +3,8 @@
     <button class="p-1 mr-5 -ml-1 rounded-md xl:hidden focus:outline-none focus:shadow-outline-purple" aria-label="Menu" data-action="click->navbar#toggle">
       <div data-navbar-target="openSide"><span class="material-symbols-outlined text-lg">menu</span></div>
     </button>
-    
     <div class="flex justify-center flex-1 lg:mr-32">
     </div>
-
     <ul class="flex items-center flex-shrink-0 space-x-6 invisible md:visible">
       <span data-action="click->theme-color#toggle" class="visible cursor-pointer rounded-md">
         <div id="lightIcon" data-theme-color-target="light">
@@ -16,7 +14,6 @@
           <span class="material-symbols-outlined text-2xl">light_mode</span>
         </div>
       </span>
-      
       <li class="relative visible">
         <button class="mx-1 relative align-middle rounded-md focus:outline-none focus:shadow-outline-purple" data-action="click->notification#toggle">
           <span class="material-symbols-outlined text-2xl">notifications</span>
@@ -32,8 +29,7 @@
           </ul>
         </div>
       </li>
-
-      <li class="relative group relative dropdown px-4">
+      <li class="relative group dropdown px-4">
         <div class="group relative dropdown cursor-pointer text-base tracking-wide bg-white py-1 rounded-lg px-3"  aria-label="Account" aria-haspopup="true">
           <div class="flex items-center">
             <%= image_tag current_user.decorate.profile_url, class: 'inline max-w-[2rem] h-[2rem] flex-none rounded-full mr-2', alt: 'main_logo' %>
@@ -45,7 +41,7 @@
           </div>
         </div>
         <div class="group-hover:block dropdown-menu absolute hidden h-auto z-10">
-          <ul class="top-0 w-48 bg-white shadow px-4 py-3 right-0 w-56 mt-2 space-y-2 text-slate-600 bg-white border border-slate-100 rounded-md shadow-md dark:border-slate-700 dark:text-slate-300 dark:bg-slate-700" aria-label="submenu">
+          <ul class="top-0 bg-white px-4 py-3 right-0 w-56 mt-2 space-y-2 text-slate-600 border border-slate-100 rounded-md shadow-md dark:border-slate-700 dark:text-slate-300 dark:bg-slate-700" aria-label="submenu">
             <li class="flex">
               <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-slate-100 hover:text-slate-800 dark:hover:bg-slate-800 dark:hover:text-slate-200" href="<%= profile_path %>">
                 <span class="material-symbols-outlined text-lg">person</span>
@@ -62,14 +58,14 @@
                 <%= button_to destroy_user_session_path, method: :delete, class: 'inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-slate-100 hover:text-slate-800 dark:hover:bg-slate-800 dark:hover:text-slate-200',
                   data: {confirm: 'Etes-vous sur?'}, :"data-turbolinks" => false do
                 %>
-                  <span class="material-symbols-outlined text-lg">login</span>
-                  <span class="ml-2">Déconnexion</span>
-                <% end %>
+                <span class="material-symbols-outlined text-lg">login</span>
+                <span class="ml-2">Déconnexion</span>
               <% end %>
-            </li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </div>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
 </header>

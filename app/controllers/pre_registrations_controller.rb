@@ -4,4 +4,7 @@ class PreRegistrationsController < AuthController
     @current_step = params[:step] || '1'
     @student.current_step = @current_step
   end
+  def success
+    
+  end
 end

@@ -1,1 +1,30 @@
-<h1>Pre inscription ok</h1>
+
+<div class="flex w-full h-[90vh] items-center justify-center">
+	<div class="rounded-xl border border-gray-100 bg-white p-4 shadow-xl w-1/3">
+  <div class="flex items-start gap-4"> 
+    <%= image_tag "gif.gif", :size => "100x100" %>
+    <div class="flex-1">
+      <strong class="block font-medium text-gray-900 text-4xl">FELICITATION &#128512</strong>
+      <p class="mt-1 text-gray-700">
+        Votre inscription s'est bien passé.
+      </p>
+    </div>
+  </div>
+
+  <h4>Rendez-vous au service de scolarité avec:</h4>
+  <ol>
+    <li>Extrait de naissance</li>
+    <li>Certificat de nationalité</li>
+    <li>Copie certifiée du BAC et relévée de notes</li>
+  </ol>
+  <h3>Date: <% demain = Date.current + 2.day %>
+    <%= demain.strftime "%d/%m/%Y"%>
+</h3>
+<h3>Heure: 8h00 à 12h30</h3>
+<div class="flex space-x-3">
+  &#128512 &#128512 &#128512
+</div>
+
+</div>
+
+</div>

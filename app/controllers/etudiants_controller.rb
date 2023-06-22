@@ -70,6 +70,58 @@ class EtudiantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def etudiant_params
-      params.require(:etudiant).permit(:matricule, :first_name, :last_name, :gender, :birth_date, :birth_place, :nationality, :marital_status, :email, :address, :parent_address, :user_id, :certificat_name, :certificat_year, :certificat_place, :certificat_country, :field_id, :field_option_id, :metadata)
+      params.require(:etudiant).permit(
+        :matricule, 
+        :first_name, 
+        :last_name, 
+        :gender, 
+        :birth_date, 
+        :birth_place, 
+        :nationality, 
+        :marital_status, 
+        :email, 
+        :address, 
+        :parent_address, 
+        :user_id, 
+        :certificat_name, 
+        :certificat_year, 
+        :certificat_place, 
+        :certificat_country, 
+        :field_id, 
+        :field_option_id, 
+        :fac
+        )
     end
+      private
+
+  def student_params
+    params.require(:student).permit(
+      :last_name,
+      :first_name,
+      :gender,
+      :nationality,
+      :birth_date,
+      :birth_place,
+      :marital_status,
+      :address,
+      :email,
+      :parent_address,
+      :certificat_name,
+      :certificat_year,
+      :certificat_place,
+      :certificat_country,
+      :bac,
+      :photo,
+      :releve,
+      :current_step,
+    )
+  end
+
+  def filter_params
+    {
+      query: params[:filter][:query],
+      created_from: params[:created_from],
+      created_to: params[:created_to]
+    } if params[:filter]
+  end
 end

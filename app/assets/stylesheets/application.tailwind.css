@@ -9,7 +9,7 @@
 
 @layer components {
   .cards {
-    @apply rounded-lg border border-gray-100 bg-slate-50 p-4 shadow-sm transition hover:shadow-lg sm:p-6 w-96;
+    @apply rounded-lg border border-gray-200 bg-slate-50 p-4 shadow-sm transition hover:shadow-lg sm:p-6 w-96;
   }
 
   .card-head {
@@ -110,11 +110,6 @@
 }
 
 }
-
-
-
-
-
 
 .button-step::before {
   border-left: 20px solid #fff;
