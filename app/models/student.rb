@@ -23,7 +23,7 @@ class Student < ApplicationRecord
   validates :birth_date, :presence => true
   #validates :matricule, presence: true, uniqueness: {case_sensitive: true}
   validate :validate_age
-  validates :bac, :releve, :photo
+  validates :bac, :releve, :photo, :presence => true
 
   jsonb_accessor :metadata,
     current_step: [:string, default: '1']
