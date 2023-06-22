@@ -16,12 +16,14 @@ class Student < ApplicationRecord
 
   enum marital_status: { married: 0, unmarried: 1, divorced: 2, widow: 3 }
   enum gender: { male: 0, female: 1 }
+  enum fichier_excel: {2022=> 0, 2023=>1, 2024 => 2, 2025 => 3, 2026 => 4, 2027 =>5, 2027 =>6 }
 
   validates :last_name, :last_name, :gender, :nationality, :birth_place, :marital_status, :address, :email, :parent_address, presence: true
   validates :certificat_name, :certificat_year, :certificat_place, :certificat_country, presence: true, if: -> { current_step == '2' }
   validates :birth_date, :presence => true
   #validates :matricule, presence: true, uniqueness: {case_sensitive: true}
   validate :validate_age
+  validates :bac, :releve, :photo
 
   jsonb_accessor :metadata,
     current_step: [:string, default: '1']
@@ -47,7 +49,7 @@ class Student < ApplicationRecord
 
   # Formulaire Etape Un
   EDITABLE_FIELDS_STEP_1 = [
-    ['bac_year', "Entrer l'année du bac", 'number'],
+    ['fichier_excel', "Entrer l'année du bac", 'enum'],
     ['table_number', 'Numéro de table', 'number'],
     ['current_step', '', 'hidden'],
   ].freeze

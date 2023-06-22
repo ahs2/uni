@@ -74,3 +74,23 @@ class StudentsController < GenericsController
     } if params[:filter]
   end
 end
+
+
+#def generer_matricule
+ # alphabet = ('A'..'Z').to_a
+ # chiffres = (0..9).to_a
+
+  # Générer une partie alphabétique de 3 caractères
+ # partie_alphabetique = 3.times.map { alphabet.sample }.join('')
+
+  # Générer une partie numérique de 3 chiffres
+#  partie_numerique = 3.times.map { chiffres.sample }.join('')
+
+  # Concaténer les deux parties pour obtenir le matricule final
+ # matricule = partie_alphabetique + partie_numerique
+
+ # return matricule
+#end
+
+# Exemple d'utilisation
+#puts generer_matricule
